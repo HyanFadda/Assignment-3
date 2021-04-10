@@ -125,3 +125,17 @@ public class TestEmailClass {
 		email.addHeader(name[1], value[1]);
 
 	}
+// This method is created to test the "addReplyTo(String email, String name)"
+	// method
+	@Test
+	public void TestAddReplyTo() throws EmailException {
+		Email email = new EmailMock();
+		email.addReplyTo("riyan@example.com", "Riyan");
+		email.addReplyTo("aliyana@example.com", "Aliyana");
+
+		// It asserts that two Email reply to addressers are equal
+		assertEquals(2, email.getReplyToAddresses().size());
+		assertEquals("riyan@example.com", email.getReplyToAddresses().get(0).getAddress());
+		assertEquals("aliyana@example.com", email.getReplyToAddresses().get(1).getAddress());
+
+	}
