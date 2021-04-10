@@ -69,3 +69,24 @@ public class TestEmailClass {
 		// It asserts that count of BCC addresses are equal
 		assertEquals(bccArr.length, email.getBccAddresses().size());
 	}
+// This method is created to test the "addCc(String... emails)" method
+	@Test
+	public void TestAddcc() throws EmailException, AddressException {
+		Email email = new EmailMock();
+
+		String ccAddresses[] = new String[3];
+
+		ccAddresses[0] = new String("john@example.com");
+		ccAddresses[1] = new String("harry@example.com");
+		ccAddresses[2] = new String("roy@example.com");
+
+		email.addCc(ccAddresses);
+
+		assertEquals(new InternetAddress("john@example.com"), email.getCcAddresses().get(0));
+		assertEquals(new InternetAddress("harry@example.com"), email.getCcAddresses().get(1));
+		assertEquals(new InternetAddress("roy@example.com"), email.getCcAddresses().get(2));
+
+		// It asserts that count of CC addresses are equal
+		assertEquals(ccAddresses.length, email.getCcAddresses().size());
+
+	}
