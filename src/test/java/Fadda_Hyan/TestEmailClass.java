@@ -51,3 +51,21 @@ public class TestEmailClass {
 		// It asserts that two Date objects are equal
 		assertEquals(new Date(), email2.getSentDate());
 	}
+// This method is created to test the "addBcc(String... emails)" method
+	@Test
+	public void TestAddBcc() throws EmailException, AddressException {
+		Email email = new EmailMock();
+
+		String bccArr[] = new String[2];
+
+		bccArr[0] = new String("abc@example.com");
+		bccArr[1] = new String("xyz@example.com");
+
+		email.addBcc(bccArr);
+
+		assertEquals(new InternetAddress("abc@example.com"), email.getBccAddresses().get(0));
+		assertEquals(new InternetAddress("xyz@example.com"), email.getBccAddresses().get(1));
+
+		// It asserts that count of BCC addresses are equal
+		assertEquals(bccArr.length, email.getBccAddresses().size());
+	}
