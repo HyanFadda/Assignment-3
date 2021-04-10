@@ -100,3 +100,14 @@ public class TestEmailClass {
 		// It asserts that two From addresses are equal
 		assertEquals(new InternetAddress("alex@example.com"), email.getFromAddress());
 	}
+
+// This method is created to test the "setHostName(String email)" method
+	@Test
+	public void TestGetHostName() throws EmailException, AddressException {
+		Email email = new EmailMock();
+
+		email.setHostName("vip.example.com");
+
+		// It asserts that two Host names are equal
+		assertEquals("vip.example.com", email.getHostName());
+	}
