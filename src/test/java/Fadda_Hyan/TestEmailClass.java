@@ -158,3 +158,24 @@ public class TestEmailClass {
 		assertEquals("Sample email", mimeMessage.getSubject());
 		assertEquals(new InternetAddress("jerry@example.com"), mimeMessage.getAllRecipients()[0]);
 	}
+// This method is created to test the "getMailSession()" method
+	@Test
+	public void TestGetMailSession() throws EmailException {
+		Email email = new EmailMock();
+
+		Properties properties = new Properties(System.getProperties());
+
+		properties.setProperty("mail.transport.protocol", "smtp");
+		properties.setProperty("mail.smtp.host", "vip.example.com");
+
+		Session session = Session.getInstance(properties, null);
+
+		email.setMailSession(session);
+
+		// It asserts that two Email sessions are equal
+		assertEquals(session, email.getMailSession());
+
+	}
+
+}
+
