@@ -139,3 +139,22 @@ public class TestEmailClass {
 		assertEquals("aliyana@example.com", email.getReplyToAddresses().get(1).getAddress());
 
 	}
+// This method is created to test the "buildMimeMessage()" method
+	@Test
+	public void TestBuildMimeMessage() throws EmailException, MessagingException {
+		Email email = new EmailMock();
+		email.setHostName("vip.example.com");
+		email.setFrom("ziana@example.com");
+		email.addTo("jerry@example.com");
+		email.setSubject("Sample email");
+
+		email.buildMimeMessage();
+
+		MimeMessage mimeMessage = email.getMimeMessage();
+
+		// It asserts that two mimeMessages are equal by checking their from address,
+		// subject and all recipients
+		assertEquals(new InternetAddress("ziana@example.com"), mimeMessage.getFrom()[0]);
+		assertEquals("Sample email", mimeMessage.getSubject());
+		assertEquals(new InternetAddress("jerry@example.com"), mimeMessage.getAllRecipients()[0]);
+	}
