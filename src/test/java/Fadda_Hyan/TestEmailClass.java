@@ -90,3 +90,13 @@ public class TestEmailClass {
 		assertEquals(ccAddresses.length, email.getCcAddresses().size());
 
 	}
+// This method is created to test the "setFrom(String email)" method
+	@Test
+	public void TestSetFrom() throws EmailException, AddressException {
+		Email email = new EmailMock();
+
+		email.setFrom("alex@example.com");
+
+		// It asserts that two From addresses are equal
+		assertEquals(new InternetAddress("alex@example.com"), email.getFromAddress());
+	}
