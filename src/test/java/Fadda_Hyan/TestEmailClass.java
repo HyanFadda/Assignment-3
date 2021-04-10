@@ -111,3 +111,17 @@ public class TestEmailClass {
 		// It asserts that two Host names are equal
 		assertEquals("vip.example.com", email.getHostName());
 	}
+
+// This method is created to test the "addHeader(String name, String value)"
+	// method
+	@Test
+	public void TestAddHeader() throws EmailException, MessagingException {
+		Email email = new EmailMock();
+
+		String name[] = new String[] { "X-Priority", "X-Mailer", "Disposition-Notification-To" };
+		String value[] = new String[] { "3", "Outlook", "abc@example.com" };
+
+		email.addHeader(name[0], value[0]);
+		email.addHeader(name[1], value[1]);
+
+	}
